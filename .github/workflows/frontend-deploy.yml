@@ -1,0 +1,41 @@
+name: Frontend build and test and deploy
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: npm install
+
+    # - name: Run tests
+    #   run: npm run test:headless
+
+    - name: Build
+    #   run: npm run build:prod
+      run: npm run build
+
+    - name: Docker Login
+      env:
+        DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - name: Docker Build
+      run: docker-compose build
+    - name: Docker Tag
+      run: docker tag frontend-app matijamatovic/devops-frontend:latest
+    - name: Docker Deploy
+      run: docker push ${{secrets.DOCKER_USERNAME}}/devops-frontend
