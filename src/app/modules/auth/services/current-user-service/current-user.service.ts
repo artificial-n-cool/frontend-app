@@ -27,7 +27,7 @@ export class CurrentUserService {
     if (user == null) {
       return;
     }
-    user = { ...user, name: updated.name, surname: updated.surname, email: updated.email };
+    user = { ...user, ime: updated.ime, prezime: updated.prezime, email: updated.email, prebivaliste: updated.prebivaliste };
     localStorage.setItem(this.userKey, JSON.stringify(user));
   }
 
@@ -36,7 +36,7 @@ export class CurrentUserService {
     if (!user) {
       return false;
     }
-    return user.authorities.includes(authority);
+    return user.authorities?.includes(authority);
   }
 
   getCurrentUser(): AuthResponse | null {
