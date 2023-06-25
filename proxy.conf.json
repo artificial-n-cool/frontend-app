@@ -1,0 +1,8 @@
+{
+	"/backend/*":{
+		"target": "http://localhost:8081",
+		"secure": false,
+		"pathRewrite": {"^/backend" : ""},
+		"logLevel": "debug"
+	}
+}
