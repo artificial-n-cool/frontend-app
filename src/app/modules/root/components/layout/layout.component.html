@@ -1,0 +1,8 @@
+<app-navbar
+  [loggedIn]="loggedIn"
+  [isAdmin]="isAdmin"
+  [isManager]="isManager"
+  [ime]="currentUser?.ime"
+  [prezime]="currentUser?.prezime"
+></app-navbar>
+<router-outlet (activate)="reloadCurrentUser()"></router-outlet>

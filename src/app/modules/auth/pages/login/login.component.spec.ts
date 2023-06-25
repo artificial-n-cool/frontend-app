@@ -6,6 +6,8 @@ import { AuthService } from '../../services/auth-service/auth.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CurrentUserService } from '../../services/current-user-service/current-user.service';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -17,6 +19,8 @@ describe('LoginComponent', () => {
       imports: [
         HttpClientTestingModule,
         MatSnackBarModule,
+            MatToolbarModule,
+    MatMenuModule,
         RouterTestingModule,
       ],
       providers: [AuthService, CurrentUserService],
