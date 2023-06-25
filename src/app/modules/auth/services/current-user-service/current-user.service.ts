@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { AuthResponse } from '../../types/AuthResponse';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CurrentUserService {
+  constructor() {}
 
-  constructor() { }
-
-    private userKey: string = "currentUser";
+  private userKey: string = 'currentUser';
 
   setCurrentUser(user: AuthResponse) {
     localStorage.setItem(this.userKey, JSON.stringify(user));
@@ -27,7 +26,14 @@ export class CurrentUserService {
     if (user == null) {
       return;
     }
-    user = { ...user, ime: updated.ime, prezime: updated.prezime, email: updated.email, prebivaliste: updated.prebivaliste };
+    user = {
+      ...user,
+      ime: updated.ime,
+      usename: updated.username,
+      prezime: updated.prezime,
+      email: updated.email,
+      prebivaliste: updated.prebivaliste,
+    };
     localStorage.setItem(this.userKey, JSON.stringify(user));
   }
 
