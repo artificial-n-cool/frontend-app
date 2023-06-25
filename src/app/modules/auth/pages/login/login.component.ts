@@ -27,7 +27,7 @@ export class LoginComponent {
     private route: ActivatedRoute
   ) {
     this.form = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required, Validators.email])],
+      username: ['', Validators.compose([Validators.required])],
       password: ['', Validators.required]
     });
   }
@@ -46,7 +46,7 @@ export class LoginComponent {
         if (destination) {
           this.router.navigate([destination]);
         } else {
-          this.router.navigate(["/employees"]);
+          this.router.navigate(["/"]);
         }
       },
       error: _ => {
