@@ -28,8 +28,8 @@
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
     <mat-menu #beforeMenu="matMenu" xPosition="before">
-      <a mat-menu-item routerLink="/super-users/profile">Update profile</a>
-      <a mat-menu-item routerLink="/super-users/password">Change password</a>
+      <button mat-menu-item (click)="updateProfile()" id="updateProfile">Ažuriranje profila</button>
+      <a mat-menu-item routerLink="/users/password">Promena sifre</a>
       <mat-divider></mat-divider>
       <button mat-menu-item (click)="logout()" id="logout">Logout</button>
     </mat-menu>
