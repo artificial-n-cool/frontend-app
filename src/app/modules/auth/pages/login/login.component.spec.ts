@@ -8,6 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CurrentUserService } from '../../services/current-user-service/current-user.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -22,6 +23,7 @@ describe('LoginComponent', () => {
             MatToolbarModule,
     MatMenuModule,
         RouterTestingModule,
+        MatDialogModule,
       ],
       providers: [AuthService, CurrentUserService],
     });

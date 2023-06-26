@@ -1,0 +1,77 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1 mat-dialog-title *ngIf="isCreate">Create User</h1>
+  <h1 mat-dialog-title *ngIf="!isCreate">Update User</h1>
+  <div mat-dialog-content>
+    <mat-form-field class="full-width-input">
+      <input
+        matInput
+        placeholder="Username"
+        formControlName="username"
+        required
+      />
+      <mat-error> Unesite validno korisnicko ime. </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+      <mat-error> Unesite validnu lozinku. </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+      <input matInput placeholder="Ime" formControlName="ime" required />
+      <mat-error> Unesite validno ime </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+      <input
+        matInput
+        placeholder="Prezime"
+        formControlName="prezime"
+        required
+      />
+      <mat-error> Unesite validno prezime </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+      <input matInput placeholder="email" formControlName="email" required />
+      <mat-error> Unesite validan email </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+      <input
+        matInput
+        placeholder="prebivaliste"
+        formControlName="prebivaliste"
+        required
+      />
+      <mat-error> Unesite validno prebivaliste </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+      <mat-label>Tip Korisnika</mat-label>
+      <mat-select formControlName="type" required>
+        <mat-option value="HOST">Host</mat-option>
+        <mat-option value="GUEST">Guest</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button
+      mat-flat-button
+      color="basic"
+      type="button"
+      (click)="onCancelClick()"
+    >
+      Cancel
+    </button>
+    <button
+      mat-flat-button
+      id="saveUser"
+      [disabled]="!form.valid"
+      color="primary"
+      type="submit"
+    >
+      {{ isCreate ? "Registruj se" : "Ažuriraj korisnika" }}
+    </button>
+  </div>
+</form>
