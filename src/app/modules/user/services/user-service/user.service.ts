@@ -7,21 +7,31 @@ import { CreateUserResponse } from '../../types/CreateUserResponse';
 import { UpdateUserRequest } from '../../types/UpdateUserRequest';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) {}
 
   createHost(request: CreateUserRequest): Observable<CreateUserResponse> {
-    let a =  this.http.post<CreateUserResponse>(`${environment.basePath}/api/auth/signup-host`, request);
-    console.log(a)
-    return a
+    let a = this.http.post<CreateUserResponse>(
+      `${environment.basePath}/api/auth/signup-host`,
+      request
+    );
+    console.log(a);
+    return a;
   }
 
   createGuest(request: CreateUserRequest): Observable<CreateUserResponse> {
-    return this.http.post<CreateUserResponse>(`${environment.basePath}/api/auth/signup-guest`, request);
+    return this.http.post<CreateUserResponse>(
+      `${environment.basePath}/api/auth/signup-guest`,
+      request
+    );
   }
 
+  updateUser(id: number, request: UpdateUserRequest): Observable<void> {
+    return this.http.put<void>(
+      `${environment.basePath}/api/user/${id}`,
+      request
+    );
+  }
 }

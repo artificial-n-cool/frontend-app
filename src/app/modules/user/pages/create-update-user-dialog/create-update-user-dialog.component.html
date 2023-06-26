@@ -11,7 +11,7 @@
       />
       <mat-error> Unesite validno korisnicko ime. </mat-error>
     </mat-form-field>
-    <mat-form-field class="full-width-input">
+    <mat-form-field *ngIf="isCreate" class="full-width-input">
       <input
         matInput
         type="password"
@@ -47,7 +47,7 @@
       />
       <mat-error> Unesite validno prebivaliste </mat-error>
     </mat-form-field>
-    <mat-form-field class="full-width-input">
+    <mat-form-field class="full-width-input" *ngIf="isCreate">
       <mat-label>Tip Korisnika</mat-label>
       <mat-select formControlName="type" required>
         <mat-option value="HOST">Host</mat-option>
