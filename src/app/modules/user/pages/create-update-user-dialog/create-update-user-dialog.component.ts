@@ -20,13 +20,13 @@ export class CreateUpdateUserDialogComponent {
   ) {
     this.isCreate = this.User.id === 0;
     this.form = this.formBuilder.group({
-      username: ['', Validators.compose([Validators.required])],
-      password: ['', Validators.required],
+      username: [User.username, Validators.compose([Validators.required])],
+      password: [this.isCreate ? '' : "nonempty", Validators.required],
       ime: [User.ime, Validators.required],
       prezime: [User.prezime, Validators.required],
       email: [User.email, Validators.required],
       prebivaliste: [User.prebivaliste, Validators.required],
-      type: [User.type, Validators.required],
+      type: [User.authorities.find(Boolean), Validators.required],
     });
   }
 

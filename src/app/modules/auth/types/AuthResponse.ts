@@ -1,7 +1,7 @@
 export interface AuthResponse {
     id: number;
     ime: string;
-    usename: string;
+    username: string;
     prezime: string;
     email: string;
     prebivaliste: string;

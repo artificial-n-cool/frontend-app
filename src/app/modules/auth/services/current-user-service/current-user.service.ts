@@ -29,10 +29,11 @@ export class CurrentUserService {
     user = {
       ...user,
       ime: updated.ime,
-      usename: updated.username,
+      username: updated.username,
       prezime: updated.prezime,
       email: updated.email,
       prebivaliste: updated.prebivaliste,
+      jwt: updated.jwt
     };
     localStorage.setItem(this.userKey, JSON.stringify(user));
   }

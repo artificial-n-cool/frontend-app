@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './modules/auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootModule } from './modules/root/root.module';
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RootModule } from './modules/root/root.module';
     AuthModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RootModule
+    RootModule,
+    SharedModule,
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
