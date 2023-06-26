@@ -7,7 +7,6 @@ import { AuthModule } from './modules/auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootModule } from './modules/root/root.module';
 import { SharedModule } from './modules/shared/shared.module';
-import { NavbarComponent } from './modules/root/components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,6 @@ import { NavbarComponent } from './modules/root/components/navbar/navbar.compone
     HttpClientModule,
     RootModule,
     SharedModule,
-    NavbarComponent
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
