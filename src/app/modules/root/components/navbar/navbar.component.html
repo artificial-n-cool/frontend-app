@@ -6,7 +6,7 @@
     <h1 class="home" routerLink="/">Artificial-n-Cool</h1></span
   >
   <div>
-    <span class="link" *ngIf="true"
+    <span class="link" 
       ><a mat-button routerLink="/smestaj">Smestaj</a></span
     >
     <span class="link" *ngIf="loggedIn"
@@ -28,11 +28,11 @@
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
     <mat-menu #beforeMenu="matMenu" xPosition="before">
-      <button mat-residency (click)="updateProfile()" id="updateProfile">Ažuriranje profila</button>
-      <button mat-residency (click)="updatePassword()" id="updatePassword">Promena šifre</button>
-      <button mat-residency (click)="removeAccount()" id="removeAccount">Brisanje naloga</button>
+      <button mat-menu-item (click)="updateProfile()" id="updateProfile">Ažuriranje profila</button>
+      <button mat-menu-item (click)="updatePassword()" id="updatePassword">Promena šifre</button>
+      <button mat-menu-item (click)="removeAccount()" id="removeAccount">Brisanje naloga</button>
       <mat-divider></mat-divider>
-      <button mat-residency (click)="logout()" id="logout">Logout</button>
+      <button mat-menu-item (click)="logout()" id="logout">Logout</button>
     </mat-menu>
   </div>
 </mat-toolbar>
