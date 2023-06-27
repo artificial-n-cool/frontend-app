@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  basePath: 'backend'
+  basePath: 'backend',
+  guestPath: 'guestBackend',
 
 };
 

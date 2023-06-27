@@ -18,7 +18,7 @@ export class ResidencyService {
     params: ResidencyRequest
   ): Observable<PaginatedResponse<ReadResidencyResponse>> {
     return this.http.get<PaginatedResponse<ReadResidencyResponse>>(
-      `${environment.basePath}/api/residency/search`,
+      `${environment.guestPath}/api/guest/smestaj/search`,
       {
         params: {
           ...params,

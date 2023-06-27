@@ -7,7 +7,7 @@ import { ErrorService } from 'src/app/modules/shared/services/error-service/erro
 import { ReadResidencyResponse } from '../../types/ReadResidencyResponse';
 import { ResidencyRequest } from '../../types/ResidencyRequest';
 import { ResidencyService } from '../../services/residency.service';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-residency-table',
   templateUrl: './residency-table.component.html',
@@ -47,6 +47,18 @@ export class ResidencyTableComponent implements OnInit {
 
   fetchData(pageIdx: number, pageSize: number): void {
     this.waitingResults = true;
+    if (Object.keys(this.searchParams).length === 0) {
+      this.searchParams = {
+        location: '',
+        numGuests: 0,
+        from: moment(
+          new Date(new Date().getTime() - 2 * 24 * 60 * 60 * 1000)
+        ).format('yyyy-MM-DD'),
+        to: moment(
+          new Date(new Date().getTime() + 1000 * 24 * 60 * 60 * 1000)
+        ).format('yyyy-MM-DD'),
+      };
+    }
     this.residencyService
       .read(pageIdx, pageSize, this.searchParams)
       .subscribe((page) => {

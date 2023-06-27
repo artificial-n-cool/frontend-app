@@ -1,6 +1,6 @@
 export interface ResidencyRequest {
-  query?: string;
-  priceLowerBound?: number;
-  priceUpperBound?: number;
-  category?: string;
+  location?: string;
+  numGuests?: number;
+  from?: string;
+  to?: string;
 }

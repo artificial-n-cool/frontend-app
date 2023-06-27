@@ -17,7 +17,7 @@ export class SearchFormComponent {
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       location: [''],
-      numGuests: [100000],
+      numGuests: [0],
       from: [new Date(new Date().getTime() - 2 * 24 * 60 * 60 * 1000), Validators.required],
       to: [new Date(new Date().getTime() + 1000 * 24 * 60 * 60 * 1000), Validators.required]
     });
@@ -45,9 +45,9 @@ export class SearchFormComponent {
   onReset(): void {
     this.form.setValue({
       location: '',
-      numGuests: 100000,
-      from: new Date(new Date().getTime() - 2 * 24 * 60 * 60 * 1000),
-      to: new Date(new Date().getTime() + 1000 * 24 * 60 * 60 * 1000)
+      numGuests: 0,
+      from: moment(new Date(new Date().getTime() - 2 * 24 * 60 * 60 * 1000)).format('yyyy-MM-DD'),
+      to: moment(new Date(new Date().getTime() + 1000 * 24 * 60 * 60 * 1000)).format('yyyy-MM-DD')
     });
     this.searchResidency.emit(this.form.value);
   }
