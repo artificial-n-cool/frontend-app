@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateUpdateUserDialogComponent } from 'src/app/modules/user/pages/create-update-user-dialog/create-update-user-dialog.component';
 import { UserService } from 'src/app/modules/user/services/user-service/user.service';
 import { UpdatePasswordDialogComponent } from 'src/app/modules/user/pages/update-password-dialog/update-password-dialog.component';
+import { RemoveAccountDialogComponent } from 'src/app/modules/user/pages/remove-account-dialog/remove-account-dialog.component';
 
 @Component({
   selector: 'app-navbar',
@@ -72,6 +73,27 @@ export class NavbarComponent {
         req.userId = id;
         this.userService.updatePassword(req).subscribe({
           next: (response) => {},
+          error: (_) => {},
+        });
+      });
+  }
+
+  removeAccount(): void {
+    let currentUser = this.currentUserService.getCurrentUser();
+    if (currentUser === null) {
+      return;
+    }
+    let id = currentUser.id;
+    this.dialogService
+      .open(RemoveAccountDialogComponent, {
+        data: currentUser,
+      })
+      .componentInstance.onRemoveAccount.subscribe((req) => {
+        req.id = id;
+        this.userService.removeAccount(req).subscribe({
+          next: (response) => {
+            this.logout();
+          },
           error: (_) => {},
         });
       });
