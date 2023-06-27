@@ -26,7 +26,7 @@ export class CreateUpdateUserDialogComponent {
       prezime: [User.prezime, Validators.required],
       email: [User.email, Validators.required],
       prebivaliste: [User.prebivaliste, Validators.required],
-      type: [User.authorities.find(Boolean), Validators.required],
+      type: [User.authorities?.find(Boolean), Validators.required],
     });
   }
 
