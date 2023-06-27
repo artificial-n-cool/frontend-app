@@ -29,6 +29,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./modules/residency/residency.module').then((m) => m.ResidencyModule),
       },
+      {
+        path: 'residency-crud',
+        loadChildren: () =>
+          import('./modules/residency-crud/residency-crud.module').then(
+            (m) => m.ResidencyCrudModule
+          ),
+      },
     ],
   },
 ];

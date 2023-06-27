@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   basePath: 'backend',
+  hostPath: 'hostBackend',
   guestPath: 'guestBackend',
-
 };
 
 /*
