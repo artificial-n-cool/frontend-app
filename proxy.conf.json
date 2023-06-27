@@ -9,6 +9,13 @@
 		"target": "http://localhost:8080",
 		"secure": false,
 		"pathRewrite": {"^/hostBackend" : ""},
+    "logLevel": "debug"
+  },
+  "/guestBackend/*":{
+		"target": "http://localhost:8081",
+		"secure": false,
+		"pathRewrite": {"^/guestBackend" : ""},
 		"logLevel": "debug"
 	}
+
 }

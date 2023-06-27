@@ -8,11 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootModule } from './modules/root/root.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { ResidencyCrudModule } from './modules/residency-crud/residency-crud.module';
+import { ResidencyModule } from './modules/residency/residency.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,8 +21,9 @@ import { ResidencyCrudModule } from './modules/residency-crud/residency-crud.mod
     RootModule,
     SharedModule,
     ResidencyCrudModule,
+    ResidencyModule,
   ],
   providers: [HttpClientModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
