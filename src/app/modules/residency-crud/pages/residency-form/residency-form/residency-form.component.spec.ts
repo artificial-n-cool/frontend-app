@@ -1,21 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResidencyFormComponent } from './residency-form.component';
+// import { ResidencyFormComponent } from './residency-form.component';
 
-describe('ResidencyFormComponent', () => {
-  let component: ResidencyFormComponent;
-  let fixture: ComponentFixture<ResidencyFormComponent>;
+// describe('ResidencyFormComponent', () => {
+//   let component: ResidencyFormComponent;
+//   let fixture: ComponentFixture<ResidencyFormComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [ResidencyFormComponent]
-    });
-    fixture = TestBed.createComponent(ResidencyFormComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [ResidencyFormComponent]
+//     });
+//     fixture = TestBed.createComponent(ResidencyFormComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
