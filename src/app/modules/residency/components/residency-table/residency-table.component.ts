@@ -15,11 +15,13 @@ import { ResidencyService } from '../../services/residency.service';
 })
 export class ResidencyTableComponent implements OnInit {
   displayedColumns: string[] = [
-    'name',
-    'description',
-    'allergies',
-    'category',
-    'price',
+    'naziv',
+    'lokacija',
+    'pogodnosti',
+    'opis',
+    'minGostiju',
+    'maxGostiju',
+    'prosecnaOcena',
     'actions',
   ];
   dataSource: MatTableDataSource<ReadResidencyResponse> =
