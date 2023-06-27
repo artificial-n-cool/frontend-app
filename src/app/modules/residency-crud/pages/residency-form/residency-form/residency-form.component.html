@@ -1,0 +1,95 @@
+<mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h2>Dodaj smestaj</h2>
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Naziv smestaja..." formControlName="naziv" required />
+          <mat-error> Molim vas unesite naziv Vaseg smestaja. </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+            <mat-label>Lokacija</mat-label>
+            <input matInput placeholder="Lokacija smestaja..." formControlName="lokacija" required />
+            <mat-error> Molim vas unesite lokaciju Vaseg smestaja. </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+            <mat-label>Pogodnosti</mat-label>
+            <textarea matInput 
+                placeholder="Unesite sve pogodnosti Vaseg smestaja" 
+                formControlName="pogodnosti"
+                required >
+            </textarea>
+            <mat-error> Molim vas unesite pogodnosti koje Vas smestaj pruza. </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+            <mat-label>Opis</mat-label>
+            <textarea matInput 
+                placeholder="Unesite opis Vaseg smestaja" 
+                formControlName="opis"
+                required >
+            </textarea>
+            <mat-error> Molim vas unesite pogodnosti koje Vas smestaj pruza. </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+            <mat-label>Osnovna cena</mat-label>
+            <input matInput 
+                type="number" 
+                formControlName="baseCena" 
+                placeholder="Unesite cenu u evrima" 
+                required 
+            />
+            <mat-error> Molim vas unesite osnovnu cenu Vaseg smestaja u evrima. </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+            <mat-label>Unesite tip prosledjene cene</mat-label>
+            <mat-select formControlName="tipCene">
+                <mat-option value="PO_OSOBI">Po OSOSBI/nocenje</mat-option>
+                <mat-option value="PO_SMESTAJU">Po SMESTAJU/nocenje</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+            <mat-label>Minimalan broj gostiju</mat-label>
+            <input matInput 
+                type="number"
+                min="1" 
+                value="1"
+                formControlName="minGostiju" 
+                placeholder="Unesite najmanji dozvoljen broj gostiju" 
+                required 
+            />
+            <mat-error> Molim vas unesite minimalan broj gostiju (vece od 0). </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+            <mat-label>Maksimalan broj gostiju</mat-label>
+            <input matInput 
+                type="number"
+                min="1" 
+                value="2"
+                formControlName="maxGostiju" 
+                placeholder="Unesite najveci dozvoljen broj gostiju" 
+                required 
+            />
+            <mat-error> Molim vas unesite maksimalan broj gostiju (vece od 0). </mat-error>
+        </mat-form-field>
+        <!-- <mat-form-field class="full-width-input">
+            <mat-label>Fotografije smestaja</mat-label>
+            <input  
+                type="file" 
+                multiple
+                formControlName="slika"
+                (change)="onFileSelect($event)"
+                placeholder="Unesite fotografije Vaseg smestaja"
+            />
+        </mat-form-field> -->
+        <div class="full-width-input">
+            <button type="button" mat-raised-button (click)="fileInput.click()">Dodajte slike smestaja</button>
+            <input hidden multiple (change)="onFileSelect($event)" #fileInput type="file" id="file">
+        </div>
+        <mat-error *ngIf="invalidResidency">
+          Nepravilan unos smestaja.
+        </mat-error>
+        <button id="saveResidency" mat-raised-button [disabled]="!form.valid" color="primary">
+          Sacuvaj smestaj
+        </button>
+      </form>
+    </mat-card-content>
+</mat-card>
