@@ -7,11 +7,10 @@ import { AuthModule } from './modules/auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootModule } from './modules/root/root.module';
 import { SharedModule } from './modules/shared/shared.module';
+import { ResidencyModule } from './modules/residency/residency.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,8 +19,9 @@ import { SharedModule } from './modules/shared/shared.module';
     HttpClientModule,
     RootModule,
     SharedModule,
+    ResidencyModule,
   ],
   providers: [HttpClientModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
