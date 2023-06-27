@@ -5,6 +5,7 @@ import { UserRoutes } from './user.routes';
 import { MaterialModule } from 'src/app/material.module';
 import { CreateUpdateUserDialogComponent } from './pages/create-update-user-dialog/create-update-user-dialog.component';
 import { UpdatePasswordDialogComponent } from './pages/update-password-dialog/update-password-dialog.component';
+import { RemoveAccountDialogComponent } from './pages/remove-account-dialog/remove-account-dialog.component';
 
 
 
@@ -12,6 +13,7 @@ import { UpdatePasswordDialogComponent } from './pages/update-password-dialog/up
   declarations: [
     CreateUpdateUserDialogComponent,
     UpdatePasswordDialogComponent,
+    RemoveAccountDialogComponent,
   ],
   imports: [
     CommonModule,

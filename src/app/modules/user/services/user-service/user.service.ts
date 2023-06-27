@@ -6,6 +6,7 @@ import { CreateUserRequest } from '../../types/CreateUserRequest';
 import { CreateUserResponse } from '../../types/CreateUserResponse';
 import { UpdateUserRequest } from '../../types/UpdateUserRequest';
 import { PasswordRequest } from '../../types/PasswordRequest';
+import { RemoveAccountRequest } from '../../types/RemoveAccountRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -37,11 +38,18 @@ export class UserService {
   }
 
   updatePassword(request: PasswordRequest): Observable<void> {
-    console.log(request)
+    console.log(request);
     return this.http.put<void>(
       `${environment.basePath}/api/user/manage/reset-pass`,
       request
     );
   }
 
+  removeAccount(request: RemoveAccountRequest): Observable<void> {
+    console.log(request);
+    return this.http.put<void>(
+      `${environment.basePath}/api/user/manage/disable-account`,
+      request
+    );
+  }
 }
