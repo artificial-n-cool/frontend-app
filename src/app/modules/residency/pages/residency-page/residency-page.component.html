@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="card-container">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar></div>
+          <mat-card-title>{{ residency?.naziv }}</mat-card-title>
+          <mat-card-subtitle>{{ residency?.lokacija }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="card-content">
+          <p>{{ residency?.opis }}</p>
+          <p>Pogodnosti: {{ residency?.pogodnosti }}</p>
+          <p>Min gostiju: {{ residency?.minGostiju }}</p>
+          <p>Max gostiju: {{ residency?.maxGostiju }}</p>
+          <p *ngIf="residency?.prosecnaOcena">Prosecna ocena: {{ residency?.prosecnaOcena }}</p>
+          <p>Base cena: {{ residency?.baseCena }}</p>
+          <p *ngIf="residency?.totalnaCena">Totalna cena: {{ residency?.totalnaCena }}</p>
+          <p>Tip cene: {{ residency?.tipCene }}</p>
+          <div class="card-image">
+            <img *ngFor="let slika of residency?.slike" [src]="slika" alt="Slika">
+          </div>
+  
+          <h2 class="reserve-title">Reserve</h2>
+          <form class="reserve-form">
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="Stay Start Date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+  
+            <mat-form-field>
+              <input matInput type="number" placeholder="Number of Occupants" min="{{ residency?.minGostiju }}" max="{{ residency?.maxGostiju }}">
+            </mat-form-field>
+  
+            <button mat-raised-button color="primary">Reserve Now</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>

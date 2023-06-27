@@ -5,12 +5,18 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ReadResidencyResponse } from '../types/ReadResidencyResponse';
 import { ResidencyRequest } from '../types/ResidencyRequest';
+import { Residency } from '../../residency-crud/types/Residency';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ResidencyService {
+
   constructor(private http: HttpClient) {}
+
+  getResidency(residencyId: string): Observable<Residency> {
+    return this.http.get<Residency>(`${environment.hostPath}/api/host/smestaj/${residencyId}`)
+  }
 
   read(
     page: number,

@@ -8,6 +8,7 @@ import { ResidencyRoutes } from './residency.routes';
 import { MaterialModule } from 'src/app/material.module';
 import { SuchEmptyComponent } from '../shared/components/such-empty/such-empty.component';
 import { SharedModule } from '../shared/shared.module';
+import { ResidencyPageComponent } from './pages/residency-page/residency-page.component';
 
 
 
@@ -15,7 +16,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     ResidencyTableComponent,
     ResidencyTablePageComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    ResidencyPageComponent
   ],
   imports: [
     CommonModule,
