@@ -7,6 +7,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RootModule } from './modules/root/root.module';
 import { SharedModule } from './modules/shared/shared.module';
+import { ResidencyCrudModule } from './modules/residency-crud/residency-crud.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SharedModule } from './modules/shared/shared.module';
     HttpClientModule,
     RootModule,
     SharedModule,
+    ResidencyCrudModule,
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

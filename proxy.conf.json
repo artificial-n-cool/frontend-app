@@ -4,5 +4,11 @@
 		"secure": false,
 		"pathRewrite": {"^/backend" : ""},
 		"logLevel": "debug"
+	},
+	"/hostBackend/*":{
+		"target": "http://localhost:8080",
+		"secure": false,
+		"pathRewrite": {"^/hostBackend" : ""},
+		"logLevel": "debug"
 	}
 }
