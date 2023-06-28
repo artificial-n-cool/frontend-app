@@ -8,6 +8,7 @@ import { ReadResidencyResponse } from '../../types/ReadResidencyResponse';
 import { ResidencyRequest } from '../../types/ResidencyRequest';
 import { ResidencyService } from '../../services/residency.service';
 import * as moment from 'moment';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-residency-table',
   templateUrl: './residency-table.component.html',
@@ -38,7 +39,8 @@ export class ResidencyTableComponent implements OnInit {
     private residencyService: ResidencyService,
     private confirmationService: ConfirmationService,
     private errorService: ErrorService,
-    private dialogService: MatDialog
+    private dialogService: MatDialog,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -92,5 +94,9 @@ export class ResidencyTableComponent implements OnInit {
         this.waitingResults = false;
       },
     };
+  }
+
+  onView(residencyId: string) {
+    this.router.navigate(['/smestaj/residency-details', residencyId])
   }
 }
