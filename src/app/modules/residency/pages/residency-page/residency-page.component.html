@@ -7,13 +7,14 @@
         </mat-card-header>
         <mat-card-content class="card-content">
           <p>{{ residency?.opis }}</p>
-          <p>Pogodnosti: {{ residency?.pogodnosti }}</p>
-          <p>Min gostiju: {{ residency?.minGostiju }}</p>
-          <p>Max gostiju: {{ residency?.maxGostiju }}</p>
-          <p *ngIf="residency?.prosecnaOcena">Prosecna ocena: {{ residency?.prosecnaOcena }}</p>
-          <p>Base cena: {{ residency?.baseCena }}</p>
-          <p *ngIf="residency?.totalnaCena">Totalna cena: {{ residency?.totalnaCena }}</p>
-          <p>Tip cene: {{ residency?.tipCene == 'PO_SMESTAJU' ? 'Nocenje po smestaju' : 'Nocenje po osobi'}}</p>
+          <mat-divider />
+          <p><b>Pogodnosti:</b> {{ residency?.pogodnosti }}</p>
+          <p><b>Min gostiju:</b> {{ residency?.minGostiju }}</p>
+          <p><b>Max gostiju:</b> {{ residency?.maxGostiju }}</p>
+          <p *ngIf="residency?.prosecnaOcena"><b>Prosecna ocena:</b> {{ residency?.prosecnaOcena }}</p>
+          <p><b>Base cena:</b> {{ residency?.baseCena }}</p>
+          <p *ngIf="residency?.totalnaCena"><b>Totalna cena:</b> {{ residency?.totalnaCena }}</p>
+          <p><b>Tip cene:</b> {{ residency?.tipCene == 'PO_SMESTAJU' ? 'Nocenje po smestaju' : 'Nocenje po osobi'}}</p>
           <div class="card-image">
             <img *ngFor="let slika of residency?.slike" [src]="slika" alt="Slika">
           </div>
