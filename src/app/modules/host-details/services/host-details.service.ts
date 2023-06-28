@@ -7,6 +7,7 @@ import { ReadHostResponse } from '../types/ReadHostResponse';
 import { HostRequest } from '../types/HostRequest';
 import { HostOcenaRequest } from '../types/HostOcenaRequest';
 import { DeleteRatingRequest } from '../types/DeleteRatingRequest';
+import { OceneHostRequest } from '../types/OceneHostRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +32,38 @@ export class HostDetailsService {
       }
     );
   }
+
+    readHostOcene(
+    page: number,
+    size: number,
+    params: OceneHostRequest
+  ): Observable<PaginatedResponse<ReadHostResponse>> {
+    return this.http.get<PaginatedResponse<ReadHostResponse>>(
+      `${environment.guestPath}/api/guest/korisnik/search-host-ratings`,
+      {
+        params: {
+          ...params,
+          page: page,
+          size: size,
+          sort: 'id,asc',
+        },
+      }
+    );
+  }
+
+readHostOceneList(
+    params: OceneHostRequest
+  ): Observable<Array<ReadHostResponse>> {
+    return this.http.get<Array<ReadHostResponse>>(
+      `${environment.guestPath}/api/guest/korisnik/search-host-ratings-list`,
+      {
+        params: {
+          ...params,
+        },
+      }
+    );
+  }
+
 
   getHost(hostId: string): Observable<ReadHostResponse> {
     return this.http.get<ReadHostResponse>(
