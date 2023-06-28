@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ReadHostResponse } from '../types/ReadHostResponse';
 import { HostRequest } from '../types/HostRequest';
+import { HostOcenaRequest } from '../types/HostOcenaRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -30,8 +31,16 @@ export class HostDetailsService {
     );
   }
 
-    getHost(hostId: string): Observable<ReadHostResponse> {
-    return this.http.get<ReadHostResponse>(`${environment.guestPath}/api/guest/korisnik/${hostId}`)
+  getHost(hostId: string): Observable<ReadHostResponse> {
+    return this.http.get<ReadHostResponse>(
+      `${environment.guestPath}/api/guest/korisnik/${hostId}`
+    );
   }
-  
+
+  oceniHost(req: HostOcenaRequest): Observable<ReadHostResponse> {
+    return this.http.put<ReadHostResponse>(
+      `${environment.guestPath}/api/guest/korisnik/oceniHosta`,
+      req
+    );
+  }
 }
