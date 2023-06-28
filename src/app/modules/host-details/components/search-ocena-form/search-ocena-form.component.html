@@ -1,0 +1,34 @@
+<form [formGroup]="form" (reset)="onReset()" (ngSubmit)="onSubmit()">
+  <mat-grid-list cols="5" rowHeight="10:2">
+    <mat-grid-tile>
+      <mat-form-field class="full-width-input">
+        <input
+          id="hostItemSearchLocationField"
+          matInput
+          placeholder="Pretrazi ime..."
+          formControlName="ime"
+        />
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <button
+        id="hostItemResetSearchBtn"
+        type="reset"
+        mat-flat-button
+        color="basic"
+      >
+        Reset
+      </button>
+      <button
+        id="hostItemSubmitSearchBtn"
+        type="submit"
+        mat-flat-button
+        color="primary"
+        [disabled]="!form.valid"
+      >
+        Search
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

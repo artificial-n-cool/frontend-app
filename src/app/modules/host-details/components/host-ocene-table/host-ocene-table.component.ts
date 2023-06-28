@@ -6,16 +6,16 @@ import { ConfirmationService } from 'src/app/modules/shared/services/confirmatio
 import { ErrorService } from 'src/app/modules/shared/services/error-service/error.service';
 import { ReadHostResponse } from '../../types/ReadHostResponse';
 import { HostRequest } from '../../types/HostRequest';
-import { HostTableService } from '../../services/host-table.service';
+import { HostDetailsService } from '../../services/host-details.service';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-host-table',
-  templateUrl: './host-table.component.html',
-  styleUrls: ['./host-table.component.scss'],
+  selector: 'app-host-ocene-table',
+  templateUrl: './host-ocene-table.component.html',
+  styleUrls: ['./host-ocene-table.component.scss'],
 })
-export class HostTableComponent implements OnInit {
+export class HostOceneTableComponent implements OnInit {
   displayedColumns: string[] = ['ime', 'prezime', 'prosecnaOcena', 'actions'];
   dataSource: MatTableDataSource<ReadHostResponse> =
     new MatTableDataSource<ReadHostResponse>();
@@ -28,7 +28,7 @@ export class HostTableComponent implements OnInit {
   waitingResults: boolean = true;
 
   constructor(
-    private hostService: HostTableService,
+    private hostService: HostDetailsService,
     private confirmationService: ConfirmationService,
     private errorService: ErrorService,
     private dialogService: MatDialog,
@@ -59,7 +59,7 @@ export class HostTableComponent implements OnInit {
   }
 
   onViewHost(hostId: String):void{
-    this.router.navigate(['/host-details/view', hostId])
+    this.router.navigate(['/host-details', hostId])
   }
 
   onSelectPage(event: any): void {
