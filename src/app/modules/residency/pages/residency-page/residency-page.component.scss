@@ -5,46 +5,51 @@
     height: 100vh;
   }
   
-  .card-container {
-    max-width: 500px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .card-content {
-    margin-top: 20px;
-  }
-  
-  .card-image {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .card-image img {
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-    margin-bottom: 10px;
-  }
-  
-  .reserve-title {
-    margin-top: 25pt;
-  }
-  
-  .reserve-form {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  }
-  
-  .reserve-form .mat-form-field {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  
-  .reserve-form button {
-    width: 100%;
-  }
+.card-container {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card-content {
+  margin-top: 20px;
+}
+
+.card-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.card-image img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  margin-top: 5pt;
+  margin-bottom: 0;
+}
+
+.reserve-title {
+  margin-top: 25pt;
+}
+
+.reserve-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.reserve-form .mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.reserve-form button {
+  width: 100%;
+}
