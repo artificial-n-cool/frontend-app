@@ -36,6 +36,13 @@ const routes: Routes = [
             (m) => m.ResidencyCrudModule
           ),
       },
+            {
+        path: 'host-table',
+        loadChildren: () =>
+          import('./modules/host-table/host-table.module').then(
+            (m) => m.HostTableModule
+          ),
+      },
     ],
   },
 ];
