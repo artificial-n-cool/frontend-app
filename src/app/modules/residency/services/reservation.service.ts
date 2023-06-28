@@ -11,6 +11,6 @@ export class ReservationService {
   constructor(private httpClient: HttpClient) { }
 
   createReservation(reservation: Reservation) {
-    return this.httpClient.post<Reservation>(`${environment.hostPath}/api/host/rezervacije`, reservation)
+    return this.httpClient.post<Reservation>(`${environment.guestPath}/api/guest/rezervacije`, reservation)
   }
 }

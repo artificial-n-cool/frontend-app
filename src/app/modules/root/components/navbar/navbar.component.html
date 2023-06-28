@@ -14,7 +14,10 @@
     >
     <span class="link" *ngIf="loggedIn"
       ><a mat-button routerLink="/host-table">Domaćini</a></span
-    >
+      >
+    <span class="link" *ngIf="isHost">
+      <a mat-button routerLink="/residency-crud/add-residency">Dodaj smeštaj</a>
+    </span>
     <span class="link" *ngIf="!loggedIn"
       ><a mat-button routerLink="/auth/login">Login</a></span
     >

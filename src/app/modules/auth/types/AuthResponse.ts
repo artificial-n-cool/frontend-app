@@ -6,5 +6,5 @@ export interface AuthResponse {
     email: string;
     prebivaliste: string;
     jwt: string;
-    authorities: string[];
+    role: string;
 }

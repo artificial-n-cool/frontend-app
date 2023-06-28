@@ -15,7 +15,7 @@ export class ResidencyService {
   constructor(private http: HttpClient) {}
 
   getResidency(residencyId: string): Observable<Residency> {
-    return this.http.get<Residency>(`${environment.hostPath}/api/host/smestaj/${residencyId}`)
+    return this.http.get<Residency>(`${environment.guestPath}/api/guest/smestaj/${residencyId}`)
   }
 
   read(

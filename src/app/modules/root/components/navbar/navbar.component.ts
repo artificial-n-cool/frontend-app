@@ -16,9 +16,9 @@ export class NavbarComponent {
   @Input()
   loggedIn: boolean = false;
   @Input()
-  isAdmin: boolean = false;
+  isHost: boolean = false;
   @Input()
-  isManager: boolean = false;
+  isGuest: boolean = false;
   @Input()
   ime: string | undefined = '';
   @Input()
