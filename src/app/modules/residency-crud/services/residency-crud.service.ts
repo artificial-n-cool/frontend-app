@@ -12,7 +12,7 @@ export class ResidencyCrudService {
   constructor(private http: HttpClient) { }
 
   createResidency(residency: Residency): Observable<Residency> {
-    return this.http.post<Residency>(`http://localhost:8080/api/host/smestaj`, residency)
+    return this.http.post<Residency>(`${environment.hostPath}/api/host/smestaj`, residency)
   }
 
   updateResidency(residency: Residency): Observable<Residency> {

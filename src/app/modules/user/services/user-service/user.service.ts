@@ -30,7 +30,7 @@ export class UserService {
     );
   }
 
-  updateUser(id: number, request: UpdateUserRequest): Observable<void> {
+  updateUser(id: string, request: UpdateUserRequest): Observable<void> {
     return this.http.put<void>(
       `${environment.basePath}/api/user/${id}`,
       request
