@@ -1,6 +1,6 @@
 <div class="mat-elevation-z8 table-container">
-  <app-host-search-form (searchHost)="onSearchHostItem($event)">
-  </app-host-search-form>
+  <app-search-ocena-form (searchHost)="onSearchHostItem($event)">
+  </app-search-ocena-form>
   <div *ngIf="dataSource.data.length > 0">
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="ime">

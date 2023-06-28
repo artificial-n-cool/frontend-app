@@ -43,6 +43,13 @@ const routes: Routes = [
             (m) => m.HostTableModule
           ),
       },
+      {
+        path: 'host-details',
+        loadChildren: () =>
+          import('./modules/host-details/host-details.module').then(
+            (m) => m.HostDetailsModule
+          ),
+      },
     ],
   },
 ];

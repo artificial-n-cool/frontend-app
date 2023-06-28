@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="card-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ host?.ime + " " + host?.prezime }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="card-content">
+        <mat-divider />
+        <p><b>Ime:</b> {{ host?.ime }}</p>
+        <p><b>Prezime</b> {{ host?.prezime }}</p>
+        <p *ngIf="host?.prosecnaOcena">
+          <b>Prosecna ocena:</b> {{ host?.prosecnaOcena }}
+        </p>
+        <div class="oceni-title">
+          <mat-divider></mat-divider>
+          <h2>Oceni</h2>
+        </div>
+        <form
+          class="oceni-form"
+          [formGroup]="oceniForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              placeholder="Ocena"
+              min="1"
+              max="5"
+              formControlName="ocenaHosta"
+            />
+          </mat-form-field>
+          <button mat-raised-button color="primary">Oceni</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
