@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ReadHostResponse } from '../../types/ReadHostResponse';
 import { HostDetailsService } from '../../services/host-details.service';
+import { HostOcenaRequest } from '../../types/HostOcenaRequest';
 
 @Component({
   selector: 'app-host-details-view',
@@ -39,44 +40,39 @@ export class HostDetailsViewComponent {
   }
 
   onSubmit() {
-    // if (!this.currentUserService.hasUser()) {
-    //   let snackBarRef = this.snackBar.open('Ulogujte se da bi ste rezervisali smestaj', 'Uloguj me')
-    //   snackBarRef.onAction().subscribe(() => {
-    //     this.router.navigate(['/auth/login'])
-    //   })
-    //   return
-    // }
-    // if (!this.oceniForm.valid)
-    //   return
-    // console.log(this.oceniForm.value)
-    // let createdReservation: HostOcenaRequest = {
-    //   smestajID: this.route.snapshot.params['id'],
-    //   statusRezervacije: "U_OBRADI",
-    //   korisnikID: 'test-user-28061389',  // this.currentUserService.getCurrentUser()?.id!,
-    //   brojOsoba: this.oceniForm.value.brojOsoba
-    // }
-    // this.reservationService.createReservation(createdReservation).subscribe({
-    //   next: (response: Reservation) => {
-    //     console.log(response)
-    //     let snackBarRef = this.snackBar.open('Uspesno sacuvana rezervacija', 'Nastavi sa pretragom')
-    //     snackBarRef.onAction().subscribe(() => {
-    //       this.router.navigate(['/smestaj'])
-    //     })
-    //   },
-    //   error: (error: HttpErrorResponse) => {
-    //     console.log(error)
-    //     this.snackBar.open(`Ups, doslo je do greske\n${error.status}: ${error.message}`);
-    //   }
-    // })
+    if (!this.currentUserService.hasUser()) {
+      let snackBarRef = this.snackBar.open('Ulogujte se da bi ste rezervisali smestaj', 'Uloguj me')
+      snackBarRef.onAction().subscribe(() => {
+        this.router.navigate(['/auth/login'])
+      })
+      return
+    }
+    if (!this.oceniForm.valid)
+      return
+    console.log(this.oceniForm.value)
+    let hostOcenaRequest: HostOcenaRequest = {
+      hostId: this.route.snapshot.params['id'],
+      ocenjivacId: this.currentUserService.getCurrentUser()?.id,  // this.currentUserService.getCurrentUser()?.id!,
+      ocena: this.oceniForm.value.ocenaHosta,
+      datum: "random"
+
+    }
+    this.hostDetailsService.oceniHost(hostOcenaRequest).subscribe({
+      next: (response: ReadHostResponse) => {
+        console.log(response)
+        let snackBarRef = this.snackBar.open('Uspesno sacuvana ocena', 'Nastavi sa pretragom')
+        snackBarRef.onAction().subscribe(() => {
+        //   this.router.navigate(['/smestaj'])
+        })
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error)
+        this.snackBar.open(`Ups, doslo je do greske\n${error.status}: ${error.message}`);
+      }
+    })
   }
 
   fetchHost(hostId: string) {
-    // this.host = {
-    //   id: 1,
-    //   ime: 'Pera',
-    //   prezime: 'Peric',
-    //   prosecnaOcena: 4.2,
-    // };
     this.hostDetailsService.getHost(hostId).subscribe(hostResponse => {
       this.host = hostResponse;
     });
