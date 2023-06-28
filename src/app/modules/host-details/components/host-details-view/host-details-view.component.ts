@@ -8,6 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ReadHostResponse } from '../../types/ReadHostResponse';
 import { HostDetailsService } from '../../services/host-details.service';
 import { HostOcenaRequest } from '../../types/HostOcenaRequest';
+import { DeleteRatingRequest } from '../../types/DeleteRatingRequest';
 
 @Component({
   selector: 'app-host-details-view',
@@ -39,9 +40,36 @@ export class HostDetailsViewComponent {
     });
   }
 
+  onDeleteRating(){
+    if (!this.currentUserService.hasUser()) {
+      let snackBarRef = this.snackBar.open('Ulogujte se da bi ste obrisali ocenu korisnika', 'Uloguj me')
+      snackBarRef.onAction().subscribe(() => {
+        this.router.navigate(['/auth/login'])
+      })
+      return
+    }
+    let deleteOcenaRequest: DeleteRatingRequest = {
+      hostId: this.route.snapshot.params['id'],
+      ocenjivacId: this.currentUserService.getCurrentUser()?.id,  // this.currentUserService.getCurrentUser()?.id!,
+    }
+    this.hostDetailsService.deleteOcenaHost(deleteOcenaRequest).subscribe({
+      next: (response: ReadHostResponse) => {
+        console.log(response)
+        let snackBarRef = this.snackBar.open('Uspesno obrisana ocena', 'Nastavi sa pretragom')
+        snackBarRef.onAction().subscribe(() => {
+        //   this.router.navigate(['/smestaj'])
+        })
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error)
+        this.snackBar.open(`Ups, doslo je do greske\n${error.status}: ${error.message}`);
+      }
+    })
+  }
+
   onSubmit() {
     if (!this.currentUserService.hasUser()) {
-      let snackBarRef = this.snackBar.open('Ulogujte se da bi ste rezervisali smestaj', 'Uloguj me')
+      let snackBarRef = this.snackBar.open('Ulogujte se da bi ste ocenili korisnika', 'Uloguj me')
       snackBarRef.onAction().subscribe(() => {
         this.router.navigate(['/auth/login'])
       })

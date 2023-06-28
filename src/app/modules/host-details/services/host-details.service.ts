@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ReadHostResponse } from '../types/ReadHostResponse';
 import { HostRequest } from '../types/HostRequest';
 import { HostOcenaRequest } from '../types/HostOcenaRequest';
+import { DeleteRatingRequest } from '../types/DeleteRatingRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -40,6 +41,13 @@ export class HostDetailsService {
   oceniHost(req: HostOcenaRequest): Observable<ReadHostResponse> {
     return this.http.put<ReadHostResponse>(
       `${environment.guestPath}/api/guest/korisnik/oceniHosta`,
+      req
+    );
+  }
+
+  deleteOcenaHost(req: DeleteRatingRequest): Observable<ReadHostResponse> {
+    return this.http.put<ReadHostResponse>(
+      `${environment.guestPath}/api/guest/korisnik/obrisiOcenuHosta`,
       req
     );
   }

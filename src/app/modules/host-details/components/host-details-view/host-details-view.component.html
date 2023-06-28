@@ -32,6 +32,17 @@
           </mat-form-field>
           <button mat-raised-button color="primary">Oceni</button>
         </form>
+        <p>
+          <button
+            id="viewHostBtn"
+            mat-raised-button
+            color="primary"
+            matTooltip="Pogledaj detalje o korisniku"
+            (click)="onDeleteRating()"
+          >
+            Obriši ocenu
+          </button>
+        </p>
       </mat-card-content>
     </mat-card>
   </div>
