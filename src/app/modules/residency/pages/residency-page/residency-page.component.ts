@@ -89,4 +89,19 @@ export class ResidencyPageComponent {
       this.residency = residency;
     });
   }
+
+  onPromote() {
+    let residencyId = this.route.snapshot.params['id'];
+    this.router.navigate(['smestaj/promotions/', residencyId])
+  }
+
+  onUnavail() {
+    let residencyId = this.route.snapshot.params['id'];
+    this.router.navigate(['smestaj/unavailabilities/', residencyId])
+  }
+
+  onCheckRes() {
+    let residencyId = this.route.snapshot.params['id'];
+    this.router.navigate(['smestaj/new-reservations/', residencyId])
+  }
 }

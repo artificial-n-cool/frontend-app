@@ -45,6 +45,11 @@
   
             <button mat-raised-button color="primary">Reserve Now</button>
           </form>
+          <div class="reserve-form">
+            <button mat-raised-button color="secondary" (click)="onPromote()">Dodaj promocije</button>
+            <button mat-raised-button color="secondary" (click)="onUnavail()">Dodaj nedostupnosti</button>
+            <button mat-raised-button color="secondary" (click)="onCheckRes()">Pogledaj nove rezervacije</button>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>

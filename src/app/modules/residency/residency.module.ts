@@ -13,6 +13,9 @@ import { PromotionsTableComponent } from './components/promotions-table/promotio
 import { PromotionFormComponent } from './pages/promotion-form/promotion-form.component';
 import { CreatePromotionPageComponent } from './pages/create-promotion-page/create-promotion-page.component';
 import { UpdatePromotionPageComponent } from './pages/update-promotion-page/update-promotion-page.component';
+import { InavailabilityTableComponent } from './pages/inavailability-table/inavailability-table.component';
+import { ReservationTableComponent } from './pages/reservation-table/reservation-table.component';
+import { NewReservationsTableComponent } from './pages/new-reservations-table/new-reservations-table.component';
 
 
 
@@ -25,7 +28,10 @@ import { UpdatePromotionPageComponent } from './pages/update-promotion-page/upda
     PromotionsTableComponent,
     PromotionFormComponent,
     CreatePromotionPageComponent,
-    UpdatePromotionPageComponent
+    UpdatePromotionPageComponent,
+    InavailabilityTableComponent,
+    ReservationTableComponent,
+    NewReservationsTableComponent
   ],
   imports: [
     CommonModule,

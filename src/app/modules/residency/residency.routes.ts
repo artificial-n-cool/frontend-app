@@ -5,6 +5,9 @@ import { ResidencyPageComponent } from "./pages/residency-page/residency-page.co
 import { PromotionsTableComponent } from "./components/promotions-table/promotions-table.component";
 import { CreatePromotionPageComponent } from "./pages/create-promotion-page/create-promotion-page.component";
 import { UpdatePromotionPageComponent } from "./pages/update-promotion-page/update-promotion-page.component";
+import { InavailabilityTableComponent } from "./pages/inavailability-table/inavailability-table.component";
+import { ReservationTableComponent } from "./pages/reservation-table/reservation-table.component";
+import { NewReservationsTableComponent } from "./pages/new-reservations-table/new-reservations-table.component";
 
 export const ResidencyRoutes: Routes = [
     {
@@ -29,5 +32,17 @@ export const ResidencyRoutes: Routes = [
     {
         path: "promotion/update/:id/for/:smestajId",
         component: UpdatePromotionPageComponent,
+    },
+    {
+        path: "unavailabilities/:id",
+        component: InavailabilityTableComponent
+    },
+    {
+        path: "reservations",
+        component: ReservationTableComponent
+    },
+    {
+        path: "new-reservations/:id",
+        component: NewReservationsTableComponent
     }
 ];

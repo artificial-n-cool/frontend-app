@@ -1,26 +1,28 @@
 import { Component } from '@angular/core';
+import { Reservation } from '../../types/Reservation';
 import { MatTableDataSource } from '@angular/material/table';
-import { Promotion } from '../../types/Promotion';
-import { PromotionService } from '../../services/promotion.service';
+import { ReservationService } from '../../services/reservation.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observer } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CurrentUserService } from 'src/app/modules/auth/services/current-user-service/current-user.service';
+import { Observer } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-promotions-table',
-  templateUrl: './promotions-table.component.html',
-  styleUrls: ['./promotions-table.component.scss']
+  selector: 'app-reservation-table',
+  templateUrl: './reservation-table.component.html',
+  styleUrls: ['./reservation-table.component.scss']
 })
-export class PromotionsTableComponent {
+export class ReservationTableComponent {
   displayedColumns: string[] = [
+    'naziv',
     'datumOd',
     'datumDo',
-    'procenat',
+    'status',
     'actions',
   ]
-  dataSource: MatTableDataSource<Promotion> =
-    new MatTableDataSource<Promotion>();
+  dataSource: MatTableDataSource<Reservation> =
+    new MatTableDataSource<Reservation>();
 
   pageNum: number = 0;
   pageSize: number = 0;
@@ -30,21 +32,21 @@ export class PromotionsTableComponent {
   waitingResults: boolean = false;
 
   constructor(
-    private promotionService: PromotionService,
+    private currentUserService: CurrentUserService,
+    private reservationService: ReservationService,
     private router: Router,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar
   ) { }
 
-  ngOnInit(): void {
-    this.fetchData(0, this.defaultPageSize);
+  ngOnInit() {
+    this.fetchData(0, this.defaultPageSize)
   }
 
   fetchData(pageIdx: number, pageSize: number): void {
-    let residencyId = this.route.snapshot.params['id']
+    let userId = this.currentUserService.getCurrentUser()?.id!;
     this.waitingResults = true;
-    this.promotionService
-      .read(pageIdx+1, pageSize, residencyId)
+    this.reservationService.getAllForUser(userId, pageIdx+1, pageSize)
       .subscribe((page) => {
         this.pageNum = page.pageable.pageNumber;
         this.pageSize = page.pageable.pageSize;
@@ -55,7 +57,7 @@ export class PromotionsTableComponent {
       })
   }
 
-  onSelectPage(event: any): void {
+  onSelectPage(event: any) {
     this.fetchData(event.pageIdx, event.pageSize);
   }
 
@@ -73,9 +75,17 @@ export class PromotionsTableComponent {
     };
   }
 
-  onEdit(promotion: Promotion) {
-    alert(`${promotion.id} wanna edit boi?`)
-    this.router.navigate(['smestaj/promotion/update', promotion.id, 'for', promotion.smestajId])
-    console.log(promotion)
+  onCancel(reservation: Reservation) {
+    if (!confirm('Da li ste sigurni da zelite da otkazete rezervaciju?'))
+      return
+    this.reservationService.cancelReservation(reservation.id!, reservation.smestajID).subscribe({
+      next: () => {
+        this.snackBar.open('Uspesno otkazano', 'OK')
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error)
+        this.snackBar.open(`Ups, doslo je do greske\n${error.status}: ${error.message}`, 'OK');
+      }
+    })
   }
 }
