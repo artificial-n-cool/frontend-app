@@ -104,4 +104,9 @@ export class ResidencyPageComponent {
     let residencyId = this.route.snapshot.params['id'];
     this.router.navigate(['smestaj/new-reservations/', residencyId])
   }
+
+  onEdit() {
+    let residencyId = this.route.snapshot.params['id'];
+    this.router.navigate(['residency-crud/update-residency/', residencyId])
+  }
 }
