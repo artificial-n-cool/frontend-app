@@ -15,7 +15,7 @@ export class PromotionService {
 
   createPromotion(createdPromotion: Promotion): Observable<Residency> {
     return this.httpClient.put<Residency>(
-      `${environment.hostPath}/api/host/promocija`, createdPromotion
+      `${environment.hostPath}/api/host/smestaj/promocija`, createdPromotion
     )
   }
 

@@ -8,6 +8,7 @@ import { UpdatePromotionPageComponent } from "./pages/update-promotion-page/upda
 import { InavailabilityTableComponent } from "./pages/inavailability-table/inavailability-table.component";
 import { ReservationTableComponent } from "./pages/reservation-table/reservation-table.component";
 import { NewReservationsTableComponent } from "./pages/new-reservations-table/new-reservations-table.component";
+import { InavailabilityFormComponent } from "./pages/inavailability-form/inavailability-form.component";
 
 export const ResidencyRoutes: Routes = [
     {
@@ -44,5 +45,9 @@ export const ResidencyRoutes: Routes = [
     {
         path: "new-reservations/:id",
         component: NewReservationsTableComponent
+    },
+    {
+        path: "add-unavailability/:id",
+        component: InavailabilityFormComponent
     }
 ];

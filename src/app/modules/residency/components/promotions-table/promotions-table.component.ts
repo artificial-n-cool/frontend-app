@@ -17,11 +17,13 @@ export class PromotionsTableComponent {
     'datumOd',
     'datumDo',
     'procenat',
+    'dani',
     'actions',
   ]
   dataSource: MatTableDataSource<Promotion> =
     new MatTableDataSource<Promotion>();
 
+  residencyId: string = ''
   pageNum: number = 0;
   pageSize: number = 0;
   totalPages: number = 0;
@@ -42,6 +44,7 @@ export class PromotionsTableComponent {
 
   fetchData(pageIdx: number, pageSize: number): void {
     let residencyId = this.route.snapshot.params['id']
+    this.residencyId = residencyId
     this.waitingResults = true;
     this.promotionService
       .read(pageIdx+1, pageSize, residencyId)
@@ -52,6 +55,7 @@ export class PromotionsTableComponent {
         this.dataSource.data = page.content;
         this.totalElements = page.totalElements;
         this.waitingResults = false;
+        console.log(page.content)
       })
   }
 
@@ -77,5 +81,9 @@ export class PromotionsTableComponent {
     alert(`${promotion.id} wanna edit boi?`)
     this.router.navigate(['smestaj/promotion/update', promotion.id, 'for', promotion.smestajId])
     console.log(promotion)
+  }
+
+  onAddPromo() {
+    this.router.navigate(['smestaj/promotion/create/', this.residencyId])
   }
 }

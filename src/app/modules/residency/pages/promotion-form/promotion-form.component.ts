@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Promotion } from '../../types/Promotion';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PromotionService } from '../../services/promotion.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Residency } from 'src/app/modules/residency-crud/types/Residency';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-promotion-form',
@@ -20,7 +21,7 @@ export class PromotionFormComponent {
   invalidPromotion: boolean = false;
   waitingResults: boolean = true;
 
-  selectedDays: number[] = [];
+  selectedDays: any[] = [];
   days: { value: number, display: string }[] = [
     { value: 1, display: 'Poneđeljnik' },
     { value: 2, display: 'Utornik' },
@@ -36,12 +37,18 @@ export class PromotionFormComponent {
     private router: Router,
     private promotionService: PromotionService,
     private snackBar: MatSnackBar,
+    private route: ActivatedRoute,
   ) {
     this.form = formBuilder.group({
       datumOd: [this.promotion?.datumOd ?? '', Validators.required],
       datumDo: [this.promotion?.datumDo ?? '', Validators.required],
-      procenat: [this.promotion?.procenat ?? 100, Validators.compose([Validators.required, Validators.min(0)])]
+      procenat: [this.promotion?.procenat ?? 100, Validators.compose([Validators.required, Validators.min(0)])],
+      dani: [[]]
     })
+  }
+
+  ngOnInit() {
+    console.log(this.residenceId)
   }
 
   onSubmit() {
@@ -57,13 +64,16 @@ export class PromotionFormComponent {
       return;
 
     this.invalidPromotion = false;
+    let datumOd = moment(this.form.value['datumOd']).format('yyyy-MM-DD').substring(0, 10)
+    let datumDo = moment(this.form.value['datumDo']).format('yyyy-MM-DD').substring(0, 10)
+    let smestajId = this.route.snapshot.params['smestajId']
     let createdPromotion: Promotion = {
       ...this.form.value,
-      smestajId: this.residenceId,
-      dani: this.selectedDays,
+      datumOd,
+      datumDo,
+      smestajId: this.residenceId
     }
     console.log(JSON.stringify(createdPromotion))
-
     this.promotionService.createPromotion(createdPromotion).subscribe({
       next: (response: Residency) => {
         console.table(response);
@@ -85,10 +95,14 @@ export class PromotionFormComponent {
       return;
 
     this.invalidPromotion = false;
+    let datumOd = moment(this.form.value['datumOd']).format('yyyy-MM-DD').substring(0, 10)
+    let datumDo = moment(this.form.value['datumDo']).format('yyyy-MM-DD').substring(0, 10)
+    let smestajId = this.route.snapshot.params['smestajId']
     let updatedPromotion: Promotion = {
       ...this.form.value,
-      smestajId: this.residenceId,
-      dani: this.selectedDays,
+      datumOd,
+      datumDo,
+      smestajId,
       id: this.promotion?.id!
     }
     console.log(JSON.stringify(updatedPromotion))

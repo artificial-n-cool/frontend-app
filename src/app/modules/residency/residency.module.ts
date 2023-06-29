@@ -16,6 +16,7 @@ import { UpdatePromotionPageComponent } from './pages/update-promotion-page/upda
 import { InavailabilityTableComponent } from './pages/inavailability-table/inavailability-table.component';
 import { ReservationTableComponent } from './pages/reservation-table/reservation-table.component';
 import { NewReservationsTableComponent } from './pages/new-reservations-table/new-reservations-table.component';
+import { InavailabilityFormComponent } from './pages/inavailability-form/inavailability-form.component';
 
 
 
@@ -31,7 +32,8 @@ import { NewReservationsTableComponent } from './pages/new-reservations-table/ne
     UpdatePromotionPageComponent,
     InavailabilityTableComponent,
     ReservationTableComponent,
-    NewReservationsTableComponent
+    NewReservationsTableComponent,
+    InavailabilityFormComponent
   ],
   imports: [
     CommonModule,

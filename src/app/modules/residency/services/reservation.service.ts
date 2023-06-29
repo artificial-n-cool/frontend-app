@@ -27,6 +27,10 @@ export class ReservationService {
     return this.httpClient.post<Reservation>(`${environment.guestPath}/api/guest/smestaj/rezervisiSmestaj`, reservation)
   }
 
+  createUnavailability(unavailability: Reservation) {
+    return this.httpClient.post<Reservation>(`${environment.hostPath}/api/host/rezervacije/set-unavailable`, unavailability)
+  }
+
   getAllForUser(userId: string, page: number, size: number): Observable<PaginatedResponse<Reservation>> {
     return this.httpClient.get<PaginatedResponse<Reservation>>(`${environment.hostPath}/api/host/rezervacije/by-guset/${userId}`, {
       params: {

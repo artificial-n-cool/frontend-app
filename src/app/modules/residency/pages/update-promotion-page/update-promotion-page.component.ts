@@ -29,7 +29,7 @@ export class UpdatePromotionPageComponent {
       })
     ).subscribe(promotion => {
       console.log(promotion);
-      this.promotion = promotion;
+      this.promotion = { ...promotion, smestajId: this.residenceId};
     })
   }
 }

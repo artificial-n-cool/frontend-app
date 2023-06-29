@@ -1,31 +1,32 @@
 <div class="mat-elevation-z8 table-container">
-    <div *ngIf="dataSource.data.length > 0">
+  <button mat-flat-button color="primary" (click)="onAddPromo()">Dodaj</button>
+  <div *ngIf="dataSource.data.length > 0">
       <table mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="naziv">
+        <ng-container matColumnDef="datumOd">
           <th scope="col" mat-header-cell *matHeaderCellDef>Vazi od</th>
-          <td element-group="promotionName" mat-cell *matCellDef="let promotion">
+          <td element-group="promotionDatumOd" mat-cell *matCellDef="let promotion">
             {{ promotion.datumOd }}
           </td>
         </ng-container>
   
-        <ng-container matColumnDef="lokacija">
+        <ng-container matColumnDef="datumDo">
           <th scope="col" mat-header-cell *matHeaderCellDef>Vazi do</th>
-          <td element-group="promotionLokacija" mat-cell *matCellDef="let promotion">
+          <td element-group="promotionDatumDo" mat-cell *matCellDef="let promotion">
             {{ promotion.datumDo }}
           </td>
         </ng-container>
   
-        <ng-container matColumnDef="pogodnosti">
+        <ng-container matColumnDef="procenat">
           <th scope="col" mat-header-cell *matHeaderCellDef>Procenat ukupne cene</th>
-          <td element-group="promotionPogodnosti" mat-cell *matCellDef="let promotion">
+          <td element-group="promotuionProcenat" mat-cell *matCellDef="let promotion">
             {{ promotion.procenat }}
           </td>
         </ng-container>
   
-        <ng-container matColumnDef="opis">
+        <ng-container matColumnDef="dani">
           <th scope="col" mat-header-cell *matHeaderCellDef>Aktivni dani u nedelji</th>
-          <td element-group="promotionOpis" mat-cell *matCellDef="let promotion">
-            {{ promotion.dani}}
+          <td element-group="promotionDani" mat-cell *matCellDef="let promotion">
+            {{ promotion.dani }}
           </td>
         </ng-container>
 

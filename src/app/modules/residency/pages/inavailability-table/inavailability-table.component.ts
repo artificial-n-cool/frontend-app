@@ -46,7 +46,7 @@ export class InavailabilityTableComponent {
     this.route.paramMap.pipe(
       mergeMap(params => {
         let residenceId = params.get('id')
-        return this.reservationService.getAllUnavailabilitiesForResidence(residenceId!)
+        return this.reservationService.getAllUnavailabilitiesForResidence(residenceId!, pageIdx+1, pageSize)
       })
       ).subscribe((page) => {
         this.pageNum = page.pageable.pageNumber;
