@@ -10,8 +10,8 @@ import { AuthResponse } from 'src/app/modules/auth/types/AuthResponse';
 export class LayoutComponent {
 
   loggedIn: boolean = false;
-  isAdmin: boolean = false;
-  isManager: boolean = false;
+  isHost: boolean = false;
+  isGuest: boolean = false;
   currentUser: AuthResponse | null = null;
 
   constructor(
@@ -23,8 +23,8 @@ export class LayoutComponent {
   reloadCurrentUser(): void {
     this.currentUser = this.currentUserService.getCurrentUser();
     this.loggedIn = this.currentUserService.hasUser();
-    this.isAdmin = this.currentUserService.hasAuthority('ADMIN');
-    this.isManager = this.currentUserService.hasAuthority('MANAGER');
+    this.isHost = this.currentUserService.hasAuthority('HOST');
+    this.isGuest = this.currentUserService.hasAuthority('GUEST');
   }
 
 }

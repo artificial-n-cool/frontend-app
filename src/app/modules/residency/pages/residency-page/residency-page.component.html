@@ -77,6 +77,12 @@
 
           <button mat-raised-button color="primary">Reserve Now</button>
         </form>
+        <div class="reserve-form">
+          <button mat-raised-button color="secondary" (click)="onPromote()">Dodaj promocije</button>
+          <button mat-raised-button color="secondary" (click)="onUnavail()">Dodaj nedostupnosti</button>
+          <button mat-raised-button color="secondary" (click)="onCheckRes()">Pogledaj nove rezervacije</button>
+          <button mat-raised-button color="secondary" (click)="onEdit()">Izmeni smestaj</button>
+        </div>
         <div class="reserve-title">
           <mat-divider></mat-divider>
           <h2>Ocenjivanje</h2>

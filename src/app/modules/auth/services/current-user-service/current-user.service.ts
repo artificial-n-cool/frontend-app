@@ -43,7 +43,7 @@ export class CurrentUserService {
     if (!user) {
       return false;
     }
-    return user.authorities?.includes(authority);
+    return user.role === authority;
   }
 
   getCurrentUser(): AuthResponse | null {

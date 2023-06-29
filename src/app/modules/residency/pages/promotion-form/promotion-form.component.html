@@ -1,0 +1,35 @@
+<mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h2>Uredi promociju za smestaj</h2>
+        <mat-form-field class="full-width-input">
+            <mat-label>Unesite procenat</mat-label>
+            <input matInput 
+                type="number" 
+                formControlName="procenat" 
+                placeholder="Unesite cenu u evrima" 
+                required 
+            />
+            <mat-error> Molim vas unesite procenat cene.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Unesite period vazenja promocije</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate placeholder="Start date" formControlName="datumOd">
+                <input matEndDate placeholder="End date" formControlName="datumDo">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Izaberite dane vazenja akcije</mat-label>
+            <mat-select formControlName="dani" multiple>
+                <mat-option *ngFor="let day of days" [value]="day.value">{{ day.display }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <button id="saveResidency" mat-raised-button [disabled]="!form.valid" color="primary">
+          Sacuvaj 
+        </button>
+      </form>
+    </mat-card-content>
+</mat-card>

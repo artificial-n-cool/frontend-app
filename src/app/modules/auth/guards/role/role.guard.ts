@@ -26,7 +26,7 @@ export class RoleGuard implements CanActivate {
     }
     let hasAccessRights = false;
     roles.forEach(role => {
-      if (user.authorities.includes(role)) {
+      if (user.role === role) {
         hasAccessRights = true;
       }
     });

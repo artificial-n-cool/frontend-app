@@ -1,0 +1,16 @@
+<mat-card>
+    <mat-card-content>
+        <form class="reserve-form" [formGroup]="unavailabilityForm" (ngSubmit)="onSubmit()">
+            <mat-form-field>
+              <mat-label>Unesite period nedostupnosti</mat-label>
+              <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate placeholder="Start date" formControlName="datumOd">
+                <input matEndDate placeholder="End date" formControlName="datumDo">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+            <button mat-raised-button color="primary">Sacuvaj</button>
+          </form>
+    </mat-card-content>
+</mat-card>

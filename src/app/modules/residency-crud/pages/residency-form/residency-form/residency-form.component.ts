@@ -6,6 +6,7 @@ import { ResidencyCrudService } from '../../../services/residency-crud.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-residency-form',

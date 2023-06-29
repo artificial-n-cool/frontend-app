@@ -6,4 +6,5 @@ export interface Reservation {
     statusRezervacije: 'U_OBRADI' | 'PRIHVACENO' | 'ODBIJENO' | 'OTKAZANO';
     korisnikID: string;
     smestajID: string;
+    smestajNaziv?: string;
 }
