@@ -1,4 +1,4 @@
 export interface DeleteRatingResidencyRequest {
   ocenjivacId?: string;
-  residencyId?: string;
+  smestajId?: string;
 }
