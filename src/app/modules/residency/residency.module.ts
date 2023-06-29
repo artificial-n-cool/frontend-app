@@ -9,6 +9,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { SuchEmptyComponent } from '../shared/components/such-empty/such-empty.component';
 import { SharedModule } from '../shared/shared.module';
 import { ResidencyPageComponent } from './pages/residency-page/residency-page.component';
+import { ResidencyOceneTableComponent } from './components/residency-ocene-table/residency-ocene-table.component';
 
 
 
@@ -17,7 +18,8 @@ import { ResidencyPageComponent } from './pages/residency-page/residency-page.co
     ResidencyTableComponent,
     ResidencyTablePageComponent,
     SearchFormComponent,
-    ResidencyPageComponent
+    ResidencyPageComponent,
+    ResidencyOceneTableComponent
   ],
   imports: [
     CommonModule,
