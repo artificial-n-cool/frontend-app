@@ -7,6 +7,7 @@ import { ReadResidencyResponse } from '../types/ReadResidencyResponse';
 import { ResidencyRequest } from '../types/ResidencyRequest';
 import { Residency } from '../../residency-crud/types/Residency';
 import { ResidencyOcenaRequest } from '../types/ResidencyOcenaRequest';
+import { DeleteRatingResidencyRequest } from '../types/DeleteRatingResidencyRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +40,14 @@ export class ResidencyService {
 
   oceniResidency(req: ResidencyOcenaRequest): Observable<ReadResidencyResponse> {
     return this.http.put<ReadResidencyResponse>(
-      `${environment.guestPath}/api/guest/korisnik/oceniHosta`,
+      `${environment.guestPath}/api/guest/smestaj/oceniSmestaj`,
+      req
+    );
+  }
+  
+  deleteOcenaResidency(req: DeleteRatingResidencyRequest): Observable<ReadResidencyResponse> {
+    return this.http.put<ReadResidencyResponse>(
+      `${environment.guestPath}/api/guest/smestaj/obrisiOcenuSmestaja`,
       req
     );
   }
