@@ -34,7 +34,7 @@ import { ResidencyOceneTableComponent } from './components/residency-ocene-table
     InavailabilityTableComponent,
     ReservationTableComponent,
     NewReservationsTableComponent,
-    InavailabilityFormComponent
+    InavailabilityFormComponent,
     ResidencyOceneTableComponent
   ],
   imports: [
