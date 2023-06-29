@@ -62,7 +62,7 @@ export class HostDetailsViewComponent {
       },
       error: (error: HttpErrorResponse) => {
         console.log(error)
-        this.snackBar.open(`Ups, doslo je do greske\n${error.status}: ${error.message}`);
+        this.snackBar.open(`Ups, doslo je do greske\n${error.status}: ${error.message}`, 'zatvori');
       }
     })
   }
@@ -95,7 +95,7 @@ export class HostDetailsViewComponent {
       },
       error: (error: HttpErrorResponse) => {
         console.log(error)
-        this.snackBar.open(`Ups, doslo je do greske\n${error.status}: ${error.message}`);
+        this.snackBar.open(`Ups, doslo je do greske\n${error.status}: ${error.message}`, 'zatvori');
       }
     })
   }

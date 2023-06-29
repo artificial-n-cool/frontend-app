@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ReadResidencyResponse } from '../types/ReadResidencyResponse';
 import { ResidencyRequest } from '../types/ResidencyRequest';
 import { Residency } from '../../residency-crud/types/Residency';
+import { ResidencyOcenaRequest } from '../types/ResidencyOcenaRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +34,13 @@ export class ResidencyService {
           sort: 'id,asc',
         },
       }
+    );
+  }
+
+  oceniResidency(req: ResidencyOcenaRequest): Observable<ReadResidencyResponse> {
+    return this.http.put<ReadResidencyResponse>(
+      `${environment.guestPath}/api/guest/korisnik/oceniHosta`,
+      req
     );
   }
 
