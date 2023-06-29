@@ -64,7 +64,7 @@ export class ResidencyPageComponent {
     if (!this.oceniForm.valid) return;
     console.log(this.oceniForm.value);
     let hostOcenaRequest: ResidencyOcenaRequest = {
-      residencyId: this.route.snapshot.params['id'],
+      smestajId: this.route.snapshot.params['id'],
       ocenjivacId: this.currentUserService.getCurrentUser()?.id, // this.currentUserService.getCurrentUser()?.id!,
       ocena: this.oceniForm.value.ocenaHosta,
       datum: 'random',
@@ -102,7 +102,7 @@ export class ResidencyPageComponent {
       return;
     }
     let deleteOcenaRequest: DeleteRatingResidencyRequest = {
-      residencyId: this.route.snapshot.params['id'],
+      smestajId: this.route.snapshot.params['id'],
       ocenjivacId: this.currentUserService.getCurrentUser()?.id, // this.currentUserService.getCurrentUser()?.id!,
     };
     this.residencyService.deleteOcenaResidency(deleteOcenaRequest).subscribe({
