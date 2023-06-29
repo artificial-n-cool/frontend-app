@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from 'react-router-dom';
 import { Observer, mergeMap } from 'rxjs';
 import { CurrentUserService } from 'src/app/modules/auth/services/current-user-service/current-user.service';
 import { ReservationService } from '../../services/reservation.service';
