@@ -9,6 +9,8 @@ import * as moment from 'moment';
 import { Reservation } from '../../types/Reservation';
 import { ReservationService } from '../../services/reservation.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ResidencyOcenaRequest } from '../../types/ResidencyOcenaRequest';
+import { ReadResidencyResponse } from '../../types/ReadResidencyResponse';
 
 @Component({
   selector: 'app-residency-page',
@@ -18,6 +20,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ResidencyPageComponent {
   residency?: Residency;
   reservationForm: FormGroup;
+  oceniForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +35,10 @@ export class ResidencyPageComponent {
       datumOd: ['', Validators.required],
       datumDo: ['', Validators.required],
       brojOsoba: [0, Validators.required],
-    })
+    });
+    this.oceniForm = this.formBuilder.group({
+      ocenaHosta: [3, Validators.required],
+    });
   }
 
   ngOnInit() {
@@ -41,6 +47,39 @@ export class ResidencyPageComponent {
       console.log(`fetching ${residencyId}`)
       this.fetchResidency(residencyId);
     });
+  }
+
+    onOceni() {
+    if (!this.currentUserService.hasUser()) {
+      let snackBarRef = this.snackBar.open('Ulogujte se da bi ste ocenili korisnika', 'Uloguj me')
+      snackBarRef.onAction().subscribe(() => {
+        this.router.navigate(['/auth/login'])
+      })
+      return
+    }
+    if (!this.oceniForm.valid)
+      return
+    console.log(this.oceniForm.value)
+    let hostOcenaRequest: ResidencyOcenaRequest = {
+      residencyId: this.route.snapshot.params['id'],
+      ocenjivacId: this.currentUserService.getCurrentUser()?.id,  // this.currentUserService.getCurrentUser()?.id!,
+      ocena: this.oceniForm.value.ocenaHosta,
+      datum: "random"
+
+    }
+    this.residencyService.oceniResidency(hostOcenaRequest).subscribe({
+      next: (response: ReadResidencyResponse) => {
+        console.log(response)
+        let snackBarRef = this.snackBar.open('Uspesno sacuvana ocena', 'Nastavi sa pretragom')
+        snackBarRef.onAction().subscribe(() => {
+        //   this.router.navigate(['/smestaj'])
+        })
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log(error)
+        this.snackBar.open(`Ups, doslo je do greske\n${error.status}: ${error.message}`, 'zatvori');
+      }
+    })
   }
 
   onSubmit() {
@@ -79,7 +118,7 @@ export class ResidencyPageComponent {
       },
       error: (error: HttpErrorResponse) => {
         console.log(error)
-        this.snackBar.open(`Ups, doslo je do greske\n${error.status}: ${error.message}`);
+        this.snackBar.open(`Ups, doslo je do greske\n${error.status}: ${error.message}`, "zatvori");
       }
     })
   }

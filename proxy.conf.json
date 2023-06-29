@@ -6,13 +6,13 @@
 		"logLevel": "debug"
 	},
 	"/hostBackend/*":{
-		"target": "http://localhost:8080",
+		"target": "http://localhost:8085",
 		"secure": false,
 		"pathRewrite": {"^/hostBackend" : ""},
     "logLevel": "debug"
   },
   "/guestBackend/*":{
-		"target": "http://localhost:8081",
+		"target": "http://localhost:8080",
 		"secure": false,
 		"pathRewrite": {"^/guestBackend" : ""},
 		"logLevel": "debug"
