@@ -1,57 +1,124 @@
 <div class="container">
-    <div class="card-container">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{ residency?.naziv }}</mat-card-title>
-          <mat-card-subtitle>{{ residency?.lokacija }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content class="card-content">
-          <p>{{ residency?.opis }}</p>
-          <mat-divider />
-          <p><b>Pogodnosti:</b> {{ residency?.pogodnosti }}</p>
-          <p><b>Min gostiju:</b> {{ residency?.minGostiju }}</p>
-          <p><b>Max gostiju:</b> {{ residency?.maxGostiju }}</p>
-          <p *ngIf="residency?.prosecnaOcena"><b>Prosecna ocena:</b> {{ residency?.prosecnaOcena }}</p>
-          <p><b>Base cena:</b> {{ residency?.baseCena }}</p>
-          <p *ngIf="residency?.totalnaCena"><b>Totalna cena:</b> {{ residency?.totalnaCena }}</p>
-          <p><b>Tip cene:</b> {{ residency?.tipCene == 'PO_SMESTAJU' ? 'Nocenje po smestaju' : 'Nocenje po osobi'}}</p>
-          <div class="card-image">
-            <img *ngFor="let slika of residency?.slike" [src]="slika" alt="Slika">
-          </div>
-  
-          <div class="reserve-title">
-            <mat-divider></mat-divider>
-            <h2>Reserve</h2>
-          </div>
-          <form class="reserve-form" [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
-            <mat-form-field>
-              <mat-label>Unesite period boravka</mat-label>
-              <mat-date-range-input [rangePicker]="picker">
-                <input matStartDate placeholder="Start date" formControlName="datumOd">
-                <input matEndDate placeholder="End date" formControlName="datumDo">
-              </mat-date-range-input>
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-date-range-picker #picker></mat-date-range-picker>
-            </mat-form-field>
-  
-            <mat-form-field>
-              <input matInput 
-                type="number" 
-                placeholder="Number of Occupants" 
-                min="{{ residency?.minGostiju }}" 
-                max="{{ residency?.maxGostiju }}" 
-                formControlName="brojOsoba" />
-            </mat-form-field>
-  
-            <button mat-raised-button color="primary">Reserve Now</button>
-          </form>
-          <div class="reserve-form">
-            <button mat-raised-button color="secondary" (click)="onPromote()">Dodaj promocije</button>
-            <button mat-raised-button color="secondary" (click)="onUnavail()">Dodaj nedostupnosti</button>
-            <button mat-raised-button color="secondary" (click)="onCheckRes()">Pogledaj nove rezervacije</button>
-            <button mat-raised-button color="secondary" (click)="onEdit()">Izmeni smestaj</button>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </div>
+  <div class="card-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ residency?.naziv }}</mat-card-title>
+        <mat-card-subtitle>{{ residency?.lokacija }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="card-content">
+        <p>{{ residency?.opis }}</p>
+        <mat-divider />
+        <p><b>Pogodnosti:</b> {{ residency?.pogodnosti }}</p>
+        <p><b>Min gostiju:</b> {{ residency?.minGostiju }}</p>
+        <p><b>Max gostiju:</b> {{ residency?.maxGostiju }}</p>
+        <p *ngIf="residency?.prosecnaOcena">
+          <b>Prosecna ocena:</b> {{ residency?.prosecnaOcena }}
+        </p>
+        <p><b>Base cena:</b> {{ residency?.baseCena }}</p>
+        <p *ngIf="residency?.totalnaCena">
+          <b>Totalna cena:</b> {{ residency?.totalnaCena }}
+        </p>
+        <p>
+          <b>Tip cene:</b>
+          {{
+            residency?.tipCene == "PO_SMESTAJU"
+              ? "Nocenje po smestaju"
+              : "Nocenje po osobi"
+          }}
+        </p>
+        <div class="card-image">
+          <img
+            *ngFor="let slika of residency?.slike"
+            [src]="slika"
+            alt="Slika"
+          />
+        </div>
+
+        <div class="reserve-title">
+          <mat-divider></mat-divider>
+          <h2>Reserve</h2>
+        </div>
+        <form
+          class="reserve-form"
+          [formGroup]="reservationForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <mat-form-field>
+            <mat-label>Unesite period boravka</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input
+                matStartDate
+                placeholder="Start date"
+                formControlName="datumOd"
+              />
+              <input
+                matEndDate
+                placeholder="End date"
+                formControlName="datumDo"
+              />
+            </mat-date-range-input>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              placeholder="Number of Occupants"
+              min="{{ residency?.minGostiju }}"
+              max="{{ residency?.maxGostiju }}"
+              formControlName="brojOsoba"
+            />
+          </mat-form-field>
+
+          <button mat-raised-button color="primary">Reserve Now</button>
+        </form>
+        <div class="reserve-form">
+          <button mat-raised-button color="secondary" (click)="onPromote()">Dodaj promocije</button>
+          <button mat-raised-button color="secondary" (click)="onUnavail()">Dodaj nedostupnosti</button>
+          <button mat-raised-button color="secondary" (click)="onCheckRes()">Pogledaj nove rezervacije</button>
+          <button mat-raised-button color="secondary" (click)="onEdit()">Izmeni smestaj</button>
+        </div>
+        <div class="reserve-title">
+          <mat-divider></mat-divider>
+          <h2>Ocenjivanje</h2>
+        </div>
+        <form
+          class="reserve-form"
+          [formGroup]="oceniForm"
+          (ngSubmit)="onOceni()"
+        >
+          <mat-form-field>
+            <input
+              matInput
+              type="number"
+              placeholder="Ocena"
+              min="1"
+              max="5"
+              formControlName="ocenaHosta"
+            />
+          </mat-form-field>
+          <button mat-raised-button color="primary">Oceni</button>
+        </form>
+        <p>
+          <button
+            id="viewHostBtn"
+            mat-raised-button
+            color="primary"
+            matTooltip="Pogledaj detalje o korisniku"
+            (click)="onDeleteRating()"
+          >
+            Obriši ocenu
+          </button>
+        </p>
+      </mat-card-content>
+    </mat-card>
   </div>
+</div>
+
+  <h1>Ocene</h1>
+<app-residency-ocene-table></app-residency-ocene-table>

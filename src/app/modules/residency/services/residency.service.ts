@@ -6,6 +6,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ReadResidencyResponse } from '../types/ReadResidencyResponse';
 import { ResidencyRequest } from '../types/ResidencyRequest';
 import { Residency } from '../../residency-crud/types/Residency';
+import { ResidencyOcenaRequest } from '../types/ResidencyOcenaRequest';
+import { DeleteRatingResidencyRequest } from '../types/DeleteRatingResidencyRequest';
+import { OceneResidencyRequest } from '../types/OceneResidencyRequest';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +34,34 @@ export class ResidencyService {
           page: page,
           size: size,
           sort: 'id,asc',
+        },
+      }
+    );
+  }
+
+  oceniResidency(req: ResidencyOcenaRequest): Observable<ReadResidencyResponse> {
+    return this.http.put<ReadResidencyResponse>(
+      `${environment.guestPath}/api/guest/smestaj/oceniSmestaj`,
+      req
+    );
+  }
+  
+  deleteOcenaResidency(req: DeleteRatingResidencyRequest): Observable<ReadResidencyResponse> {
+    return this.http.put<ReadResidencyResponse>(
+      `${environment.guestPath}/api/guest/smestaj/obrisiOcenuSmestaja`,
+      req
+    );
+  }
+
+
+  readResidencyOceneList(
+    params: OceneResidencyRequest
+  ): Observable<Array<ReadResidencyResponse>> {
+    return this.http.get<Array<ReadResidencyResponse>>(
+      `${environment.guestPath}/api/guest/smestaj/search-smestaj-ratings-list`,
+      {
+        params: {
+          ...params,
         },
       }
     );

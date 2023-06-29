@@ -17,6 +17,7 @@ import { InavailabilityTableComponent } from './pages/inavailability-table/inava
 import { ReservationTableComponent } from './pages/reservation-table/reservation-table.component';
 import { NewReservationsTableComponent } from './pages/new-reservations-table/new-reservations-table.component';
 import { InavailabilityFormComponent } from './pages/inavailability-form/inavailability-form.component';
+import { ResidencyOceneTableComponent } from './components/residency-ocene-table/residency-ocene-table.component';
 
 
 
@@ -34,6 +35,7 @@ import { InavailabilityFormComponent } from './pages/inavailability-form/inavail
     ReservationTableComponent,
     NewReservationsTableComponent,
     InavailabilityFormComponent
+    ResidencyOceneTableComponent
   ],
   imports: [
     CommonModule,

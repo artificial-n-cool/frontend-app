@@ -1,48 +1,37 @@
 <div class="mat-elevation-z8 table-container">
-  <app-host-search-form (searchHost)="onSearchHostItem($event)">
-  </app-host-search-form>
+  <!-- <app-search-ocena-form (searchResidency)="onSearchResidencyItem($event)">
+  </app-search-ocena-form> -->
   <div *ngIf="dataSource.data.length > 0">
     <table mat-table [dataSource]="dataSource">
-      <ng-container matColumnDef="ime">
-        <th scope="col" mat-header-cell *matHeaderCellDef>Ime</th>
-        <td element-group="hostItemIme" mat-cell *matCellDef="let hostItem">
-          {{ hostItem.ime }}
+      <ng-container matColumnDef="username">
+        <th scope="col" mat-header-cell *matHeaderCellDef>Username</th>
+        <td element-group="residencyItemIme" mat-cell *matCellDef="let residencyItem">
+          {{ residencyItem.username }}
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="prezime">
-        <th scope="col" mat-header-cell *matHeaderCellDef>Prezime</th>
-        <td element-group="hostItemPrezime" mat-cell *matCellDef="let hostItem">
-          {{ hostItem.prezime }}
+      <ng-container matColumnDef="datum">
+        <th scope="col" mat-header-cell *matHeaderCellDef>Datum</th>
+        <td element-group="residencyItemPrezime" mat-cell *matCellDef="let residencyItem">
+          {{ residencyItem.datum }}
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="prosecnaOcena">
-        <th scope="col" mat-header-cell *matHeaderCellDef>Prosečna ocena</th>
+      <ng-container matColumnDef="ocena">
+        <th scope="col" mat-header-cell *matHeaderCellDef>Ocena</th>
         <td
-          element-group="hostItemProsecnaOcena"
+          element-group="residencyItemProsecnaOcena"
           mat-cell
-          *matCellDef="let hostItem"
+          *matCellDef="let residencyItem"
         >
-          {{ hostItem.prosecnaOcena }}
+          {{ residencyItem.ocena }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="actions">
         <th scope="col" mat-header-cell *matHeaderCellDef>Actions</th>
-        <td mat-cell *matCellDef="let host">
+        <td mat-cell *matCellDef="let residency">
           <mat-grid-list cols="3">
-            <mat-grid-tile>
-              <button
-                id="viewHostBtn"
-                mat-mini-fab
-                color="primary"
-                matTooltip="Pogledaj detalje o korisniku"
-                (click)="onViewHost(host.id)"
-              >
-                <mat-icon>edit</mat-icon>
-              </button>
-            </mat-grid-tile>
           </mat-grid-list>
         </td>
       </ng-container>
