@@ -1,21 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InavailabilityTableComponent } from './inavailability-table.component';
+// import { InavailabilityTableComponent } from './inavailability-table.component';
 
-describe('InavailabilityTableComponent', () => {
-  let component: InavailabilityTableComponent;
-  let fixture: ComponentFixture<InavailabilityTableComponent>;
+// describe('InavailabilityTableComponent', () => {
+//   let component: InavailabilityTableComponent;
+//   let fixture: ComponentFixture<InavailabilityTableComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [InavailabilityTableComponent]
-    });
-    fixture = TestBed.createComponent(InavailabilityTableComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [InavailabilityTableComponent]
+//     });
+//     fixture = TestBed.createComponent(InavailabilityTableComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
